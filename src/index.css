@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #EC682E;
+  --color-secondary: #000000;
+  --color-accent: #FDF6E3;
+
+  --font-heading: "Archivo Black", sans-serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette from Poster */
+  --primary: #EC682E;
+  /* Vibrant Orange */
+  --primary-hover: #D45A25;
+  --secondary: #000000;
+  /* Pure Black */
+  --accent: #FDF6E3;
+  /* Warm Beige / Off-white */
+  --white: #FFFFFF;
+  --text-dark: #000000;
+  --text-light: #FDF6E3;
+  --gray: #666666;
+
+  /* Fluid Typography & Spacing */
+  --font-heading: 'Archivo Black', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+
+  /* Fluid sizing using clamp(min, preferred, max) */
+  --h1: clamp(3.5rem, 10vw, 8rem);
+  --h2: clamp(2.5rem, 6vw, 4rem);
+  --h3: clamp(1.5rem, 4vw, 2.5rem);
+  --p: clamp(1rem, 1.2vw, 1.25rem);
+
+  --container-max: 1440px;
+  --section-space: clamp(4rem, 8vw, 10rem);
+
+  /* Transitions */
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--accent);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 0.5cm;
+  padding-right: 0.5cm;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.section-padding {
+  padding: var(--section-space) 0;
+}
+
+/* Poster Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 2vw, 18px) clamp(24px, 4vw, 40px);
+  border-radius: 100px;
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(236, 104, 46, 0.3);
+}
+
+.btn-black {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.btn-black:hover {
+  background-color: var(--primary);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Banded Section Utility */
+.band-black {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.band-orange {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.band-beige {
+  background-color: var(--accent);
+  color: var(--secondary);
+}
+
+/* Global Styles Refinement */
+.section-title {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.section-title h2 {
+  margin-bottom: 20px;
+}
+
+.orange-line {
+  width: 100px;
+  height: clamp(6px, 1vw, 12px);
+  background-color: var(--primary);
+  margin: 0 auto;
+}
+
+/* Responsive Grid Helper */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40%, 450px), 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.8s ease forwards;
+}
