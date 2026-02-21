@@ -57,8 +57,10 @@ const Rooms = () => {
               </div>
 
               <div className="room-price-box">
-                <span className="p-val">₹{room.price}</span>
-                <span className="p-unit">/month</span>
+                <div className="p-val-container">
+                  <span className="p-val">₹{room.price}</span>
+                  <span className="p-unit">/month</span>
+                </div>
                 <p className="p-sub">* EXCLUDING ELECTRICITY</p>
               </div>
 
@@ -142,24 +144,39 @@ const Rooms = () => {
         }
 
         .room-price-box {
-          margin-bottom: 25px;
+          margin-bottom: 30px;
           text-align: center;
-          background: #fff;
-          padding: 20px;
-          border-radius: 20px;
+          background: #000;
+          padding: clamp(1.5rem, 5vw, 2.5rem);
+          border-radius: 25px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .p-val-container {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 6px;
         }
 
         .p-val {
           font-family: var(--font-heading);
-          font-size: 4rem;
-          color: #000;
+          font-size: clamp(3rem, 10vw, 4.5rem);
+          color: #fff;
           line-height: 1;
         }
 
         .p-unit {
-          font-size: 1.2rem;
-          color: #777;
-          font-family: var(--font-heading);
+          font-size: clamp(0.75rem, 2.5vw, 1rem);
+          color: #aaa;
+          font-family: var(--font-body);
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
 
         .p-sub {

@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, MessageSquare, Send } from 'lucide-react';
 
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [room, setRoom] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!name || !mobile || !room) return;
+
+    const roomLabel =
+      room === 'ac' ? 'AC Room' :
+        room === 'non-ac' ? 'Non-AC Room' :
+          room === 'tiffin' ? 'Tiffin / Mess Only' : room;
+
+    const text =
+      `Hi, my name is ${name}.
+I want more information about ${roomLabel}.
+My mobile number is ${mobile}.
+My enquiry: ${message || 'No additional message.'}`;
+
+    window.open(
+      `https://wa.me/919425338217?text=${encodeURIComponent(text)}`,
+      '_blank'
+    );
+  };
+
   const getWALink = () => {
-    const message = `Hi, I want to enquire about ROOM8 hostel.`;
-    return `https://wa.me/919425338217?text=${encodeURIComponent(message)}`;
+    const msg = `Hi, I want to enquire about ROOM8 hostel.`;
+    return `https://wa.me/919425338217?text=${encodeURIComponent(msg)}`;
   };
 
   return (
@@ -43,18 +69,18 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="detail-pill">
+            {/* <div className="detail-pill">
               <div className="icon-circ"><MessageSquare size={24} /></div>
               <div className="text-circ">
                 <h3>WHATSAPP</h3>
                 <p>Instant availability check</p>
                 <a href={getWALink()} target="_blank" rel="noopener noreferrer" className="c-link">Chat Now</a>
               </div>
-            </div>
+            </div> */}
 
             <div className="map-poster-frame">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.583483244247!2d78.1969408!3d26.242784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c748c8266479%3A0xe5395679f291e0a2!2sPanchsheel%20Society%2C%20Gwalior!5e0!3m2!1sen!2sin!4v1700000000000"
+                src="https://maps.google.com/maps?q=26.206864,78.196255&z=17&output=embed"
                 width="100%"
                 height="300"
                 style={{ border: 'clamp(5px, 1vw, 10px) solid #fff', borderRadius: '20px' }}
@@ -72,26 +98,50 @@ const Contact = () => {
             className="form-poster-wrap"
           >
             <div className="form-head-ribbon">SUBMIT ENQUIRY</div>
-            <form className="p-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="p-form" onSubmit={handleSend}>
               <div className="p-group">
-                <input type="text" placeholder="FULL NAME" required />
+                <label className="p-label">Full Name *</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Rahul Sharma"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div className="p-group">
-                <input type="tel" placeholder="MOBILE NUMBER" required />
+                <label className="p-label">Mobile Number *</label>
+                <input
+                  type="tel"
+                  placeholder="e.g. 9425338217"
+                  required
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                />
               </div>
               <div className="p-group">
-                <select required>
-                  <option value="">ROOM TYPE?</option>
-                  <option value="ac">AC ROOM</option>
-                  <option value="non-ac">NON-AC ROOM</option>
+                <label className="p-label">Room Type *</label>
+                <select required value={room} onChange={(e) => setRoom(e.target.value)}>
+                  <option value="">Select room type…</option>
+                  <option value="ac">AC Room</option>
+                  <option value="non-ac">Non-AC Room</option>
+                  <option value="tiffin">Tiffin / Mess Only</option>
                 </select>
               </div>
               <div className="p-group">
-                <textarea rows="4" placeholder="MESSAGE"></textarea>
+                <label className="p-label">Your Message (optional)</label>
+                <textarea
+                  rows="4"
+                  placeholder="Any specific questions or requirements…"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
               </div>
-              <button type="submit" className="btn btn-primary w-full">
-                <Send size={20} />
-                SEND NOW
+              <button type="submit" className="wa-send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Send Enquiry on WhatsApp
               </button>
             </form>
           </motion.div>
@@ -182,6 +232,16 @@ const Contact = () => {
 
         .p-form { padding: clamp(2rem, 5vw, 4rem); }
 
+        .p-label {
+          display: block;
+          font-size: 0.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: #555;
+          margin-bottom: 0.5rem;
+        }
+
         .p-group { margin-bottom: 1.5rem; }
 
         .p-group input, .p-group select, .p-group textarea {
@@ -203,6 +263,30 @@ const Contact = () => {
         }
 
         .w-full { width: 100%; }
+
+        .wa-send-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          padding: 1.1rem 2rem;
+          background-color: #25D366;
+          color: white;
+          border: none;
+          border-radius: 14px;
+          font-family: var(--font-heading);
+          font-size: 1.05rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+          box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+        }
+
+        .wa-send-btn:hover {
+          background-color: #128C7E;
+          transform: translateY(-2px);
+        }
 
         @media (max-width: 768px) {
           .detail-pill { padding: 1.5rem; }

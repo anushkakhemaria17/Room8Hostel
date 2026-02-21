@@ -8,7 +8,6 @@ const Facilities = () => {
     { icon: <Wifi size={40} />, title: "Wi-Fi", desc: "High Speed" },
     { icon: <Wind size={40} />, title: "AC/Cooler", desc: "Comfort Living" },
     { icon: <BookOpen size={40} />, title: "Study", desc: "Quiet Zones" },
-    { icon: <Zap size={40} />, title: "Power", desc: "24x7 Supply" },
     { icon: <ShieldCheck size={40} />, title: "Safety", desc: "CCTV Active" },
     { icon: <Trash2 size={40} />, title: "Clean", desc: "Daily Service" },
   ];
@@ -75,7 +74,7 @@ const Facilities = () => {
             </p>
             <div className="quick-points">
               <div className="q-point text-white"><ShieldCheck size={20} className="text-primary" /> <span>24x7 CCTV &amp; Warden</span></div>
-              <div className="q-point text-white"><Zap size={20} className="text-primary" /> <span>Dual Power Backup</span></div>
+              {/* <div className="q-point text-white"><Zap size={20} className="text-primary" /> <span>Dual Power Backup</span></div> */}
               <div className="q-point text-white"><Wifi size={20} className="text-primary" /> <span>Gigabit Fiber Internet</span></div>
             </div>
           </motion.div>
@@ -147,6 +146,8 @@ const Facilities = () => {
           gap: 25px;
           padding: 25px 0;
           border-bottom: 1px solid rgba(255,255,255,0.05);
+          align-items: flex-start;
+          width: 100%;
         }
 
         .menu-row:last-child {
@@ -167,24 +168,28 @@ const Facilities = () => {
 
         .m-head {
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          margin-bottom: 5px;
+          justify-content: space-between;
+          width: 100%;
+          gap: 20px;
         }
 
         .m-meal {
           font-family: var(--font-heading);
           font-size: 1.1rem;
           color: white;
+          flex-grow: 1;   /* THIS pushes the time to the edge */
         }
 
         .m-time {
           font-size: 0.75rem;
           background-color: #333;
           color: #aaa;
-          padding: 4px 12px;
+          padding: 4px 14px;
           border-radius: 100px;
           font-weight: 700;
+          margin-left: auto;   /* forces extreme right alignment */
+          white-space: nowrap;
         }
 
         .m-desc {
@@ -192,7 +197,14 @@ const Facilities = () => {
           color: #888;
           font-weight: 500;
         }
-
+        
+        .m-info {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        
         .mess-footer {
           padding: 20px;
           text-align: center;
