@@ -103,7 +103,7 @@ My enquiry: ${message || 'No additional message.'}`;
                 <label className="p-label">Full Name *</label>
                 <input
                   type="text"
-                  placeholder="e.g. Rahul Sharma"
+                  placeholder="your name "
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -113,7 +113,7 @@ My enquiry: ${message || 'No additional message.'}`;
                 <label className="p-label">Mobile Number *</label>
                 <input
                   type="tel"
-                  placeholder="e.g. 9425338217"
+                  placeholder="your mobile number"
                   required
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
