@@ -38,7 +38,7 @@ const About = () => {
               ))}
             </div>
 
-            <div className="info-box-poster mt-10">
+            <div className="info-box-poster" style={{ marginTop: "2.5rem" }}>
               <div className="i-head"><Info size={20} /> <span>Warden On Duty</span></div>
               <p>Warden resides within the premises for immediate assistance and discipline 24/7.</p>
             </div>
@@ -55,7 +55,6 @@ const About = () => {
               <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hostel Room" />
               <div className="frame-bottom-band">ROOM8 - YOUR PLACE TO GROW</div>
             </div>
-            <div className="accent-bg-square"></div>
           </motion.div>
 
         </div>
@@ -180,18 +179,6 @@ const About = () => {
           margin-top: 15px;
         }
 
-        .accent-bg-square {
-          position: absolute;
-          width: 300px;
-          height: 300px;
-          background-color: var(--primary);
-          top: 50%;
-          right: -50px;
-          transform: translateY(-50%);
-          z-index: 1;
-          opacity: 0.1;
-          border-radius: 50px;
-        }
 
         @media (max-width: 768px) {
           .timings-grid { grid-template-columns: 1fr; }

@@ -40,7 +40,7 @@ const Hero = () => {
           {/* Promotional Band */}
           <div className="promo-band-black">
             <div className="band-content">
-              <h2>ROOMS AND TIFFIN SERVICE AVAILABLE</h2>
+              <h2>ROOMS &amp; TIFFIN SERVICE AVAILABLE</h2>
             </div>
           </div>
 
@@ -73,8 +73,9 @@ const Hero = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 100px 0 60px;
+          padding: clamp(80px, 15vw, 120px) clamp(0.5rem, 3vw, 2rem) clamp(40px, 8vw, 80px);
           position: relative;
+          overflow-x: hidden;
         }
 
         .hero-wrapper {
@@ -82,95 +83,118 @@ const Hero = () => {
           justify-content: center;
           align-items: center;
           width: 100%;
+          padding: 0 clamp(0.5rem, 2vw, 0.5rem);
+          box-sizing: border-box;
         }
 
         .poster-body {
           background-color: var(--accent);
           width: 100%;
           max-width: 900px;
-          padding: clamp(3rem, 10vw, 6rem) clamp(1rem, 5vw, 4rem);
-          border-radius: clamp(40px, 15vw, 150px);
+          padding: clamp(1.5rem, 6vw, 6rem) clamp(1rem, 5vw, 4rem);
+          border-radius: clamp(24px, 8vw, 100px);
           text-align: center;
-          box-shadow: 0 60px 120px rgba(0,0,0,0.4);
-          border: 15px solid #000;
+          box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+          border: clamp(5px, 1.5vw, 15px) solid #000;
           display: flex;
           flex-direction: column;
           align-items: center;
+          overflow: hidden;
+          box-sizing: border-box;
         }
 
         .tagline-italic {
           font-family: var(--font-body);
           font-style: italic;
-          font-size: clamp(1.2rem, 3vw, 2.5rem);
+          font-size: clamp(0.9rem, 3vw, 2.5rem);
           color: #333;
           display: block;
-          margin-bottom: 1.5rem;
+          margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
         }
 
         .logo-main {
-          font-size: clamp(6rem, 18vw, 13rem);
-          line-height: 0.8;
+          font-size: clamp(4rem, 18vw, 13rem);
+          line-height: 0.85;
           margin-bottom: 0.5rem;
           letter-spacing: -0.05em;
         }
 
         .logo-underline {
-          width: 120px;
-          height: 12px;
+          width: clamp(60px, 20vw, 120px);
+          height: clamp(6px, 1.5vw, 12px);
           background-color: var(--primary);
-          margin: 0 auto 2rem;
+          margin: 0 auto clamp(1rem, 3vw, 2rem);
         }
 
         .logo-subtext {
           background-color: #000;
           color: #fff;
-          padding: 12px 40px;
+          padding: clamp(8px, 1.5vw, 14px) clamp(16px, 5vw, 40px);
           border-radius: 50px;
           display: inline-block;
-          margin-bottom: 4rem;
+          margin-bottom: clamp(1.5rem, 5vw, 4rem);
+          max-width: 100%;
         }
 
         .logo-subtext span {
           font-family: var(--font-heading);
-          font-size: clamp(0.9rem, 1.5vw, 1.3rem);
-          letter-spacing: 0.2em;
+          font-size: clamp(0.65rem, 2vw, 1.3rem);
+          letter-spacing: clamp(0.05em, 1vw, 0.2em);
+          white-space: nowrap;
         }
 
         .promo-band-black {
-          background-color: #000;
-          width: calc(100% + clamp(2rem, 10vw, 8rem));
-          margin-bottom: 4rem;
-          padding: 2rem;
-          transform: rotate(-1deg);
+          position: relative;
+          overflow: hidden;
+          width: calc(100% + 2 * clamp(1rem, 5vw, 4rem));
+          margin-left: calc(-1 * clamp(1rem, 5vw, 4rem));
+          margin-right: calc(-1 * clamp(1rem, 5vw, 4rem));
+          margin-bottom: clamp(1.5rem, 5vw, 4rem);
+          padding: clamp(0.75rem, 2vw, 2rem) clamp(1rem, 3vw, 3rem);
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          background: linear-gradient(270deg, #EC682E, #1a1a1a, #0a0a0a, #EC682E);
+          background-size: 400% 400%;
+          animation: movingGradient 6s ease infinite;
+        }
+
+        @keyframes movingGradient {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
 
         .band-content h2 {
           color: #fff;
-          font-size: clamp(1.2rem, 4vw, 3rem);
+          font-size: clamp(0.75rem, 3vw, 2.5rem);
           letter-spacing: 0.05em;
           margin: 0;
+          white-space: normal;
+          text-align: center;
+          line-height: 1.3;
+          word-break: break-word;
         }
 
         .hero-cta-group {
           display: flex;
-          gap: 2rem;
+          gap: clamp(0.75rem, 3vw, 2rem);
           flex-wrap: wrap;
           justify-content: center;
-          margin-bottom: 3rem;
+          margin-bottom: clamp(1.5rem, 4vw, 3rem);
+          width: 100%;
         }
 
         .action-btn {
           display: flex;
           align-items: center;
-          gap: 15px;
-          padding: 18px 45px;
+          gap: clamp(8px, 2vw, 15px);
+          padding: clamp(12px, 2.5vw, 18px) clamp(20px, 6vw, 45px);
           border-radius: 100px;
           font-family: var(--font-heading);
-          font-size: 1rem;
+          font-size: clamp(0.8rem, 2vw, 1rem);
           text-transform: uppercase;
           transition: var(--transition);
           box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          white-space: nowrap;
         }
 
         .wa-btn { background-color: #25D366; color: white; }
@@ -181,16 +205,26 @@ const Hero = () => {
 
         .poster-footer-info p {
           font-family: var(--font-heading);
-          font-size: 0.75rem;
+          font-size: clamp(0.55rem, 1.5vw, 0.75rem);
           color: #666;
-          letter-spacing: 0.3em;
+          letter-spacing: clamp(0.1em, 1vw, 0.3em);
           text-transform: uppercase;
+          text-align: center;
         }
 
-        @media (max-width: 768px) {
-          .poster-body { border-width: 8px; border-radius: 60px; }
-          .promo-band-black { width: 100vw; margin-left: -1rem; margin-right: -1rem; }
-          .hero-cta-group { flex-direction: column; width: 100%; gap: 1rem; }
+        @media (max-width: 480px) {
+          .poster-body { border-radius: 20px; }
+          .promo-band-black { width: calc(100% + 2.5rem); margin-left: -1.25rem; }
+          .band-content h2 { font-size: clamp(0.6rem, 3.5vw, 1rem); white-space: normal; text-align: center; }
+          .hero-cta-group { flex-direction: column; gap: 0.75rem; }
+          .action-btn { width: 100%; justify-content: center; }
+          .logo-subtext span { white-space: normal; }
+        }
+
+        @media (max-width: 768px) and (min-width: 481px) {
+          .poster-body { border-radius: 30px; }
+          .promo-band-black { width: calc(100% + 3rem); margin-left: -1.5rem; }
+          .hero-cta-group { flex-direction: column; width: 100%; gap: 0.75rem; }
           .action-btn { width: 100%; justify-content: center; }
         }
       `}</style>

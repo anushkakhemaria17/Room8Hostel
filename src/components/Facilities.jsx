@@ -69,12 +69,12 @@ const Facilities = () => {
             className="facilities-text"
           >
             <h3 className="sub-heading-accent">Beyond Just a Living Space</h3>
-            <p className="text-gray-400 mb-8">
+            <p className="text-gray-400" style={{ marginBottom: "2.5rem", lineHeight: "1.8" }}>
               We focus on the holistic wellbeing of our students. From high-speed internet for studies
               to 24/7 security and homemade meals, ROOM8 provides everything you need to feel at home.
             </p>
             <div className="quick-points">
-              <div className="q-point text-white"><ShieldCheck size={20} className="text-primary" /> <span>24x7 CCTV & Warden</span></div>
+              <div className="q-point text-white"><ShieldCheck size={20} className="text-primary" /> <span>24x7 CCTV &amp; Warden</span></div>
               <div className="q-point text-white"><Zap size={20} className="text-primary" /> <span>Dual Power Backup</span></div>
               <div className="q-point text-white"><Wifi size={20} className="text-primary" /> <span>Gigabit Fiber Internet</span></div>
             </div>
@@ -207,22 +207,26 @@ const Facilities = () => {
           font-family: var(--font-heading);
           font-size: 3rem;
           color: white;
-          margin-bottom: 1.5rem;
-          line-height: 1;
+          margin-bottom: 2rem;
+          line-height: 1.05;
         }
 
         .quick-points {
           display: flex;
           flex-direction: column;
-          gap: 15px;
+          gap: 24px;
         }
 
         .q-point {
           display: flex;
           align-items: center;
-          gap: 15px;
+          gap: 18px;
           font-weight: 600;
           font-size: 1.1rem;
+          padding: 14px 20px;
+          background-color: rgba(255,255,255,0.04);
+          border-radius: 14px;
+          border-left: 3px solid var(--primary);
         }
 
         .marquee-container {
